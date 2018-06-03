@@ -11,7 +11,29 @@ const SIDE = 6
 const SYMBOLS = '😀🎉💖🎩🐶🐱🦄🐬🌍🌛🌞💫🍎🍌🍓🍐🍟🍿'
 
 class App extends Component {
-  cards = this.generateCards()
+  state = {
+    cards: this.generateCards(),
+    currentPair: [],
+    guesses: 0,
+    matchedCardIndices: []
+  }
+
+  getFeedbackForCard(index) {
+    console.log('index', index);
+    
+    const { currentPair, matchedCardIndices } = this.state
+    const indexMatched = matchedCardIndices.includes(index)
+  
+    if (currentPair.length < 2) {
+      return indexMatched || index === currentPair[0] ? 'visible' : 'hidden'
+    }
+  
+    if (currentPair.includes(index)) {
+      return indexMatched ? 'justMatched' : 'justMismatched'
+    }
+  
+    return indexMatched ? 'visible' : 'hidden'
+  }
 
   generateCards() {
     const result = []
@@ -25,21 +47,36 @@ class App extends Component {
     return shuffle(result)
   }
 
-  handleCardClick = (card) => {
-    console.log(card, 'clicked', this)
+  handleCardClick = index => {
+    const { currentPair } = this.state
+
+    if (currentPair.length === 2) {
+      return
+    }
+
+    if (currentPair.length === 0) {
+      this.setState({ currentPair: [index] }) //re render!!
+      return
+    }
+
+    this.handleNewPairClosedBy(index)
   }
 
   render() {
-    const won = true;
+    const { cards, guesses, matchedCardIndices } = this.state
+    console.log('toto');
+    
+    const won = matchedCardIndices.length === cards.length;
     return (
       <div className="memory">
         <GuessCount guesses={0} />
-        {this.cards.map((card,index) => (
+        {cards.map((card, index) => (
           <Card
             card={card}
-            feedback='hidden'
+            feedback={this.getFeedbackForCard(index)}
             onClick={this.handleCardClick}
             key={index}
+            index={index}
           />
         ))}
         {won && <HallOfFame entries={FAKE_HOF} />}
