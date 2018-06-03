@@ -25,7 +25,7 @@ HallOfFame.propTypes = {
           date: PropTypes.string.isRequired,
           player: PropTypes.string.isRequired
         })
-    )
+    ).isRequired
 }
 
 
