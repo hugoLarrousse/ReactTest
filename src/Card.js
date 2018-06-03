@@ -24,6 +24,7 @@ Card.propTypes = {
     'visible',
   ]).isRequired,
   onClick: PropTypes.func.isRequired,
+  index: PropTypes.number.isRequired,
 }
 
 export default Card
