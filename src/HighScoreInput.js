@@ -30,12 +30,16 @@ class HighScoreInput extends Component {
                 onChange= {this.handleWinnerUpdate}
                 value={this.state.winner}/>
           </label>
-          <button type="submit">J’ai gagné !</button>
+          <ButtonWidget text="Validation"/>
         </p>
       </form>
     )
   }
 }
+
+const ButtonWidget = (props) => (
+  <button type="submit">{props.text}</button>
+)
 
 HighScoreInput.propTypes = {
   guesses: PropTypes.number.isRequired,
