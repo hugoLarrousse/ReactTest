@@ -9,7 +9,7 @@ import HallOfFame from './HallOfFame'
 import HighScoreInput from './HighScoreInput'
 
 const SIDE = 6
-const SYMBOLS = '😀🎉💖🎩🐶🐱🦄🐬🌍🌛🌞💫🍎🍌🍓🍐🍟🍿'
+export const SYMBOLS = '😀🎉💖🎩🐶🐱🦄🐬🌍🌛🌞💫🍎🍌🍓🍐🍟🍿'
 
 class App extends Component {
   state = {
