@@ -8,7 +8,7 @@ import { saveHOFEntry } from './HallOfFame'
 
 
 class HighScoreInput extends Component {
-    state= { winner: ''} //local state only for the class, so "this" is only for the HighScoreInput Class, that's why we have to initialize winner
+    state= { winner: '', test: 'this is a test'} //local state only for the class, so "this" is only for the HighScoreInput Class, that's why we have to initialize winner
     handleWinnerUpdate = (event) => {
         this.setState({ winner: event.target.value.toUpperCase() })
       }
@@ -17,6 +17,10 @@ class HighScoreInput extends Component {
         event.preventDefault()
         const newEntry = { guesses: this.props.guesses, player: this.state.winner }
         saveHOFEntry(newEntry, this.props.onStored)
+    }
+
+    update( e ) {
+      this.setState({ test: e.target.value})
     }
   render() {
     return (
@@ -31,6 +35,8 @@ class HighScoreInput extends Component {
                 value={this.state.winner}/>
           </label>
           <ButtonWidget text="Validation"/>
+          <h2> {this.state.test}</h2>
+          <TestWidget update={this.update.bind(this)}/>
         </p>
       </form>
     )
@@ -39,6 +45,10 @@ class HighScoreInput extends Component {
 
 const ButtonWidget = (props) => (
   <button type="submit">{props.text}</button>
+)
+
+const TestWidget = ({ update }) => (
+  <input type="text" onChange={update} />
 )
 
 HighScoreInput.propTypes = {
