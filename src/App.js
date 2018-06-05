@@ -7,6 +7,7 @@ import Card from './Card'
 import GuessCount from './GuessCount'
 import HallOfFame from './HallOfFame'
 import HighScoreInput from './HighScoreInput'
+import { Button, Heart } from './eggheadTest'
 
 const SIDE = 6
 export const SYMBOLS = '😀🎉💖🎩🐶🐱🦄🐬🌍🌛🌞💫🍎🍌🍓🍐🍟🍿'
@@ -106,6 +107,7 @@ class App extends Component {
               <HighScoreInput guesses={guesses} onStored={this.displayHallOfFame} />
             ))
         }
+       <Button> <Heart/> Test button with stateless function and access to this text with props.children </Button>
       </div>
     )
   }
