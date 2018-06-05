@@ -272,9 +272,46 @@ export class Label extends React.Component {
             <label onMouseMove={this.props.update }> {this.props.children} - {this.props.count} </label>
         )
     }
-} 
+}
+
+
+// React.Children
+export class ReactChildren extends React.Component {
+    render() {
+        return (
+            <Parent>
+                <div className="childA"> aa</div>
+                <div className="childB"> </div>
+            </Parent>
+        )
+    }
+}
+
+export class Parent extends React.Component {
+    render() {
+        let items;
+    //not working if only 1 child
+        // let items = this.props.children.map(child => child)
+
+        // better to use React.Children functionalities
+            // let items = React.Children.map(this.props.children, child => child)
+            // let items = React.Children.toArray(this.props.children)
+        React.Children.forEach(this.props.children, child => console.log('child', child))
+        // works only if there is one child
+          // let items = React.Children.only(this.props.children)
+
+
+        console.log('items', items || 'AHAHAHA');
+        return null
+    }
+}
+
+
 
 const LabelHOC = HOC(Label)
+
+
+
 
 
 
