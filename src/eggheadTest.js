@@ -196,5 +196,85 @@ export class MapForComponent extends React.Component {
         )
     }
 }
-
 const Person = (props) => <h4> {props.item.name} </h4>
+
+export class TestH7 extends React.Component {
+    constructor() {
+        super();
+        this.state = { response: '' }
+    }
+
+    componentWillMount() {
+        fetch('https://api.heptaward.com')
+            .then(response => this.setState({response: response.statusText}));
+    }
+    filter = (e) => {
+        this.setState({filter: e.target.value})
+    }
+
+    render() {
+        let response = this.state.response
+        console.log('response', response);
+        
+        return (
+            <div>
+                <p> H7 : {response} </p>
+            </div>
+        )
+    }
+}
+
+
+
+//Compose React COMPONENT BEHAVIOUR WITH HIGHER ORDER COMPONENTS (HOC)
+const HOC = (InnerComponent) => class extends React.Component {
+    constructor() {
+        super();
+        this.state = { count:0 }
+    }
+    update = () => {
+        this.setState({count: this.state.count + 1 })
+    }
+    render() {
+        console.log('will mount');
+        return (
+            <InnerComponent
+                {...this.props} //important to spread props!!
+                {...this.state}
+                update={this.update}
+            />
+        )
+    }
+}
+
+export class ComposeComponent extends React.Component {
+    render() {
+        return (
+            <div>
+                <Button2 >button</Button2>
+                <LabelHOC>label </LabelHOC>
+            </div>
+        )
+    }
+}
+
+const toto = {
+    color: "red"
+}
+
+const Button2 = HOC((props) => <button onClick={props.update} style={toto} >{props.children} - {props.count}</button>)
+
+
+
+export class Label extends React.Component {
+    render() {
+        return (
+            <label onMouseMove={this.props.update }> {this.props.children} - {this.props.count} </label>
+        )
+    }
+} 
+
+const LabelHOC = HOC(Label)
+
+
+
