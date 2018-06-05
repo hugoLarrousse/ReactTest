@@ -8,7 +8,7 @@ import GuessCount from './GuessCount'
 import HallOfFame from './HallOfFame'
 import HighScoreInput from './HighScoreInput'
 import { Button, Heart, Title, EventTest, RefTest, LifeCycle,
-  ComponentUpdate, MapForComponent, TestH7, ComposeComponent, ReactChildren
+  ComponentUpdate, MapForComponent, TestH7, ComposeComponent, ReactChildren, ReactCloneElement
 } from './eggheadTest'
 
 const SIDE = 6
@@ -121,6 +121,7 @@ class App extends Component {
        <div> </div>
        <ComposeComponent />
        <ReactChildren />
+       <ReactCloneElement />
       </div>
     )
   }

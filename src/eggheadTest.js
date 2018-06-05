@@ -274,6 +274,7 @@ export class Label extends React.Component {
     }
 }
 
+const LabelHOC = HOC(Label)
 
 // React.Children
 export class ReactChildren extends React.Component {
@@ -306,9 +307,49 @@ export class Parent extends React.Component {
     }
 }
 
+// how to know in which button you clicked --> use cloneElement
+export class ReactCloneElement extends React.Component {
+  constructor() {
+    super();
+  }
+  render() {
+    return (
+      <div>
+        <Buttons>
+            <button value="A">A</button>
+            <button value="B">B</button>
+            <button value="C">C</button>
+        </Buttons>
+      </div>
+    )
+  }
+}
+
+class Buttons extends React.Component {
+  constructor() {
+    super();
+    this.state = { selected: 'None'}
+  }
+
+  selectItem = (selected) => {
+      this.setState({selected})
+  }
+
+  render() {
+    let func = child => React.cloneElement(child, { onClick: this.selectItem.bind(this, child.props.value)})
+    let items = React.Children.map(this.props.children, func);
+    return (
+      <div>
+        <h2> You have Selected: {this.state.selected } </h2>
+    {items}
+      </div>
+    )
+  }
+}
 
 
-const LabelHOC = HOC(Label)
+
+
 
 
 
