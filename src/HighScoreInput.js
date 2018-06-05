@@ -35,9 +35,9 @@ class HighScoreInput extends Component {
                 value={this.state.winner}/>
           </label>
           <ButtonWidget text="Validation"/>
-          <h2> {this.state.test}</h2>
           <TestWidget update={this.update.bind(this)}/>
         </p>
+        <h2> {this.state.test} </h2>
       </form>
     )
   }

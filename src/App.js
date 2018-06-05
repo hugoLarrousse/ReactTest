@@ -7,7 +7,7 @@ import Card from './Card'
 import GuessCount from './GuessCount'
 import HallOfFame from './HallOfFame'
 import HighScoreInput from './HighScoreInput'
-import { Button, Heart } from './eggheadTest'
+import { Button, Heart, Title, EventTest, RefTest } from './eggheadTest'
 
 const SIDE = 6
 export const SYMBOLS = '😀🎉💖🎩🐶🐱🦄🐬🌍🌛🌞💫🍎🍌🍓🍐🍟🍿'
@@ -108,6 +108,9 @@ class App extends Component {
             ))
         }
        <Button> <Heart/> Test button with stateless function and access to this text with props.children </Button>
+       <Title text="totoot"/>
+       <EventTest />
+       <RefTest />
       </div>
     )
   }
