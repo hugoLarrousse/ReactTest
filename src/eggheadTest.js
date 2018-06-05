@@ -163,5 +163,38 @@ export class ComponentUpdate extends React.Component {
       console.log(`prevState increasing: ${prevState.increasing}`)
     }
    }
-   
-   ComponentUpdate.defaultProps = {val: 0}
+ComponentUpdate.defaultProps = {val: 0}
+
+//use map to create react components from Arrays of Data + filter with input
+export class MapForComponent extends React.Component {
+    constructor() {
+        super();
+        this.state = { items: [], filter: ''}
+    }
+
+    componentWillMount() {
+        fetch('https://swapi.co/api/people/?format=json')
+            .then(response => response.json())
+            .then(({results: items}) => this.setState({items}))
+    }
+    filter = (e) => {
+        this.setState({filter: e.target.value})
+    }
+
+    render() {
+        let items = this.state.items
+        if(this.state.filter) {
+            items = items.filter(item => item.name.toLowerCase().includes(this.state.filter.toLowerCase())) //!!
+        }
+        return (
+            <div>
+            <input type='text' onChange={this.filter}/>
+            {items.map((item, index) => (
+                <Person key={item.name} item={item}/> //you can't put the key inside Person
+            ))}
+            </div>
+        )
+    }
+}
+
+const Person = (props) => <h4> {props.item.name} </h4>
