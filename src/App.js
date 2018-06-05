@@ -7,7 +7,7 @@ import Card from './Card'
 import GuessCount from './GuessCount'
 import HallOfFame from './HallOfFame'
 import HighScoreInput from './HighScoreInput'
-import { Button, Heart, Title, EventTest, RefTest, LifeCycle } from './eggheadTest'
+import { Button, Heart, Title, EventTest, RefTest, LifeCycle, ComponentUpdate } from './eggheadTest'
 
 const SIDE = 6
 export const SYMBOLS = '😀🎉💖🎩🐶🐱🦄🐬🌍🌛🌞💫🍎🍌🍓🍐🍟🍿'
@@ -112,6 +112,7 @@ class App extends Component {
        <EventTest />
        <RefTest />
        <LifeCycle />
+       <ComponentUpdate />
       </div>
     )
   }

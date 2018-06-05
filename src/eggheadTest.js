@@ -129,3 +129,39 @@ export class LifeCycle extends React.Component {
 //         )
 //     }
 // }
+
+// control react component updates when new props are received (3 methods)
+export class ComponentUpdate extends React.Component {
+    constructor(){
+      super();
+      this.state = {increasing: false}
+    }
+    update(){
+      ReactDOM.render(
+        <ComponentUpdate val={this.props.val + 1} />,
+        document.getElementById('root'))
+    }
+    // when update props (info)
+    componentWillReceiveProps(nextProps){
+      this.setState({increasing: nextProps.val > this.props.val})
+    }
+    // shoudl we update the component (can block if no return)
+    shouldComponentUpdate(nextProps, nextState) {
+      return nextProps.val % 5 === 0;
+    }
+    render(){
+      console.log(this.state.increasing)
+      return (
+        <button onClick={this.update.bind(this)}>
+          {this.props.val}
+        </button>
+      )
+    }
+    //get prevProps & prevstate
+    componentDidUpdate(prevProps, prevState) {
+      console.log(`prevProps: ${prevProps.val}`)
+      console.log(`prevState increasing: ${prevState.increasing}`)
+    }
+   }
+   
+   ComponentUpdate.defaultProps = {val: 0}
