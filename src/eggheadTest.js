@@ -1,5 +1,5 @@
 import React from 'react'
-// import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 
 export const Button = (props) => <button> {props.children} </button>
@@ -79,3 +79,53 @@ class Input extends React.Component {
         return <div> <input ref='input' type="text" onChange={this.props.update} /> </div>
     }
 }
+
+export class LifeCycle extends React.Component {
+    constructor() {
+        super();
+        this.state = {val: 0}
+    }
+
+    update = () => this.setState({val: this.state.val + 1})
+
+    componentWillMount() {
+        console.log('componentWillMount');
+        this.setState({m: 2})
+    }
+
+    render () {
+        console.log('render');
+        return <button onClick={this.update}> {this.state.val * this.state.m} </button>
+    }
+
+    componentDidMount() {
+        console.log('componentDidMount');
+        console.log(ReactDOM.findDOMNode(this))
+        this.inc = setInterval(this.update, 1000)
+    }
+
+    componentWillUnmount() {
+        console.log('componentWillUnmount');
+        clearInterval(this.inc)
+    }
+}
+
+// to mount & unmount (doesn't work for now)
+// export class Wrapper extends React.Component {
+//     mount = () => {
+//         ReactDOM.render(<LifeCycle/>, document.getElementById('a'))
+//     }
+//     unmount = () => {
+//         ReactDOM.unmountComponentAtNode(<LifeCycle/>, document.getElementById('a'))
+//     }
+
+//     render() {
+//         return (
+//             <div> 
+//                 <button> onClick={this.mount} Mount </button>
+//                 <button> onClick={this.unmount} unMount </button>
+//                 <div id="a"> </div>
+//             </div>
+//         )
+//     }
+// }
