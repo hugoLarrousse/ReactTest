@@ -11,11 +11,19 @@
 ### egghead (03/06/2018)
 
 EventTest
+
 Reftest (use ref)
+
 LifeCycle
+
 MapForComponent
+
 TestH7
+
 Higher order component (HOC)
+
 ComposeComponent
+
 ReactChildre
+
 ReactCloneElement
