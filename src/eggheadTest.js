@@ -139,7 +139,7 @@ export class ComponentUpdate extends React.Component {
     update(){
       ReactDOM.render(
         <ComponentUpdate val={this.props.val + 1} />,
-        document.getElementById('root'))
+        document.getElementById('root')) // !!!
     }
     // when update props (info)
     componentWillReceiveProps(nextProps){
@@ -342,6 +342,43 @@ class Buttons extends React.Component {
       <div>
         <h2> You have Selected: {this.state.selected } </h2>
     {items}
+      </div>
+    )
+  }
+}
+
+
+export class NewRender extends React.Component {
+  constructor() {
+    super();
+    
+  }
+
+  update = () => {
+      ReactDOM.render(
+          <div>
+        <Button> <Heart/> Test button with stateless function and access to this text with props.children </Button>
+        <Title text="totoot"/>
+        <EventTest />
+        <RefTest />
+        <LifeCycle />
+        <ComponentUpdate />
+        <MapForComponent />
+        <TestH7 />
+        <div> </div>
+        <div> </div>
+        <ComposeComponent />
+        <ReactChildren />
+        <ReactCloneElement />
+        </div>,
+        document.getElementById('root'))
+  }
+
+  render() {
+    return (
+      <div>
+        <button onClick={this.update}> egghead course 1 : start learning React by Joe Maddaloneflux
+        </button>
       </div>
     )
   }
