@@ -345,7 +345,7 @@ class Buttons extends React.Component {
 }
 
 
-export class NewRender extends React.Component {
+export class NewRenderEggHead1 extends React.Component {
   update = () => {
       ReactDOM.render(
           <div>
