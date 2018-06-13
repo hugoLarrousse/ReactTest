@@ -9,6 +9,7 @@ import HallOfFame from './HallOfFame'
 import HighScoreInput from './HighScoreInput'
 import { NewRenderEggHead1 } from './eggheadCourse/eggheadCourse1'
 import { NewRenderEggHead2 } from './eggheadCourse/eggheadCourse2'
+import { RequestGraphql } from './requestGraphql'
 
 const SIDE = 6
 export const SYMBOLS = '😀🎉💖🎩🐶🐱🦄🐬🌍🌛🌞💫🍎🍌🍓🍐🍟🍿'
@@ -111,6 +112,7 @@ class App extends Component {
         <NewRenderEggHead1/>
         <NewRenderEggHead2/>
         <div id='toto' > </div>
+        <RequestGraphql/>
       </div>
     )
   }
