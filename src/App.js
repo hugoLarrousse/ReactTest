@@ -7,7 +7,8 @@ import Card from './Card'
 import GuessCount from './GuessCount'
 import HallOfFame from './HallOfFame'
 import HighScoreInput from './HighScoreInput'
-import { NewRender } from './eggheadCourse/eggheadCourse1'
+import { NewRenderEggHead1 } from './eggheadCourse/eggheadCourse1'
+import { NewRenderEggHead2 } from './eggheadCourse/eggheadCourse2'
 
 const SIDE = 6
 export const SYMBOLS = '😀🎉💖🎩🐶🐱🦄🐬🌍🌛🌞💫🍎🍌🍓🍐🍟🍿'
@@ -107,7 +108,9 @@ class App extends Component {
               <HighScoreInput guesses={guesses} onStored={this.displayHallOfFame} />
             ))
         }
-        <NewRender/>
+        <NewRenderEggHead1/>
+        <NewRenderEggHead2/>
+        <div id='toto' > </div>
       </div>
     )
   }
