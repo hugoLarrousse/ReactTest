@@ -7,7 +7,7 @@ import Card from './Card'
 import GuessCount from './GuessCount'
 import HallOfFame from './HallOfFame'
 import HighScoreInput from './HighScoreInput'
-import { NewRender } from './eggheadTest'
+import { NewRender } from './eggheadCourse/eggheadCourse1'
 
 const SIDE = 6
 export const SYMBOLS = '😀🎉💖🎩🐶🐱🦄🐬🌍🌛🌞💫🍎🍌🍓🍐🍟🍿'

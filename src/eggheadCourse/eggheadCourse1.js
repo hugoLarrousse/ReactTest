@@ -309,9 +309,6 @@ export class Parent extends React.Component {
 
 // how to know in which button you clicked --> use cloneElement
 export class ReactCloneElement extends React.Component {
-  constructor() {
-    super();
-  }
   render() {
     return (
       <div>
@@ -349,11 +346,6 @@ class Buttons extends React.Component {
 
 
 export class NewRender extends React.Component {
-  constructor() {
-    super();
-    
-  }
-
   update = () => {
       ReactDOM.render(
           <div>
