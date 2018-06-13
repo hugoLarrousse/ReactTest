@@ -62,6 +62,9 @@ class StopWatch extends React.Component {
         isRunning: false,
     })
   }
+  componentWillUnmount() { //just before unmount the component, we want to make sure that the interval is clear
+    clearInterval(this.state.interval);
+  }
 
   render() {
     const { watch, isRunning } = this.state
@@ -75,8 +78,75 @@ class StopWatch extends React.Component {
   }
 }
 
+class NameForm extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            error: null,
+            valueField: '',
+        }
+      }
+  handleSubmit = (event) => {
+    event.preventDefault()
+    console.log('two ways to access to the value of the input');
+    
+    console.log('event.target[0].value: ', event.target[0].value);
+    console.log('thanks to name=surname: ', event.target.elements.surname.value);
+    console.log('(best one) thanks to ref props', this.name.value); // best one!!
+  }
+
+  checkErrors = (value) => {
+      return value.length < 3 ? 'error' : null
+  }
+
+  checkOnChange = (event) => {
+      // if you choose to put a value to your field (value='something' ou value={something}) you have to manually change the value in the field
+      const { value } = event.target
+      this.setState({
+          valueField: value, //very important if value= ... exist
+          error: this.checkErrors(value)
+      })
+  }
+  componentDidMount() { //just before the component was mount
+    this.setState({
+        error: this.checkErrors('')
+    })
+  }
+    render() {
+        const {error, valueField} = this.state
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <label> 
+            Name: 
+            <input value={valueField} onChange={this.checkOnChange}type='text' name='surname' ref={node => this.name = node}/>
+        </label>
+        <button disabled={Boolean(error)} type='submit'> Submit </button>
+      </form>
+    )
+  }
+}
+
 
 export class NewRenderEggHead2 extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            isHidden: true,
+        }
+      }
+buttonHide = () => {
+    ReactDOM.render(
+        this.state.isHidden 
+    ? <div>
+    <StopWatch/>
+</div> :
+    <div>
+    </div>,
+    document.getElementById('toto'))
+    this.setState({
+        isHidden: !this.state.isHidden
+    })
+}
 
 update = () => {
     ReactDOM.render(
@@ -92,7 +162,8 @@ update = () => {
         <div>
         <button onClick={this.update}> egghead course 2 : the beginner's guide to React by Kent C. Dodds
         </button>
-        <StopWatch/>
+        <button onClick={this.buttonHide}> test</button>
+        <NameForm/>
       </div>
     )
   }
