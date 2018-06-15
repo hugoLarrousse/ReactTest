@@ -10,6 +10,7 @@ import HighScoreInput from './HighScoreInput'
 import { NewRenderEggHead1 } from './eggheadCourse/eggheadCourse1'
 import { NewRenderEggHead2 } from './eggheadCourse/eggheadCourse2'
 import { RequestGraphql } from './requestGraphql'
+import { AppEggHead3 } from './eggheadCourse/eggHeadCourse3/components/app'
 
 const SIDE = 6
 export const SYMBOLS = '😀🎉💖🎩🐶🐱🦄🐬🌍🌛🌞💫🍎🍌🍓🍐🍟🍿'
@@ -113,6 +114,7 @@ class App extends Component {
         <NewRenderEggHead2/>
         <div id='toto' > </div>
         <RequestGraphql/>
+        <AppEggHead3/>
       </div>
     )
   }
