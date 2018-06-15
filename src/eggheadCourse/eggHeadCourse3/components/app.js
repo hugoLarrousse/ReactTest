@@ -1,8 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
-import AppActions from '../actions/app-actions'
-import Catalog from './app-catalog'
-import Cart from './app-cart'
+import Catalog from './catalog/app-catalog'
+import Cart from './cart/app-cart'
 
 export class AppEggHead3 extends React.Component {
     display() {

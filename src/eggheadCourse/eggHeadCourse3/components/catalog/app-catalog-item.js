@@ -1,6 +1,6 @@
 import React from 'react';
-import AppActions from '../actions/app-actions'
-import CartButton from './app-cart-button'
+import AppActions from '../../actions/app-actions'
+import CartButton from './../cart/app-cart-button'
 
 const CatalogItem = (props) => (
     <div className='col-xs-6 col-sm-4 col-md-3'> 
