@@ -8,7 +8,7 @@
 * https://github.com/brillout/awesome-react-components#form-components
 
 
-### egghead course 1 : start learning React by Joe Maddaloneflux (03/06/2018)
+### egghead course 1 : start learning React by Joe Maddaloneflux (03/06/2018- 08/06/2018)
 
 EventTest
 
@@ -28,10 +28,10 @@ ReactChildre
 
 ReactCloneElement
 
-### egghead course 2 : the beginner's guide to React by Kent C. Dodds (10/06/2018)
+### egghead course 2 : the beginner's guide to React by Kent C. Dodds (10/06/2018 - 13/06/2018)
 
 
-### egghead course 3 : flux archtecture (ES6)
+### egghead course 3 : flux archtecture (ES6) (13/06/2018 - ?)
 
 ### egghead course 4 : Getting Started with Redux
 
